@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-exporter
+spec:
+  selector:
+    matchLabels:
+        kubernetes.io/os: linux
+  template:
+    metadata:
+      labels:
+        app: node-exporter
+        kubernetes.io/os: linux
+      name: node-exporter
+    spec:
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      containers:
+      - image: prom/node-exporter
+        name: node-exporter
+        ports:
+        - containerPort: 9100
+          hostPort: 9100
+          name: scrape
+      hostNetwork: true
+      hostPID: true
