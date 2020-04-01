@@ -4,10 +4,10 @@ metadata:
   name: bob-cluster-admin
   namespace: default
 subjects:
-- kind: User
-  name: bob 
-  apiGroup: rbac.authorization.k8s.io
+- kind: ServiceAccount
+  name: bob
+  namespace: default
 roleRef:
   kind: ClusterRole
-  name: admin
+  name: cluster-admin
   apiGroup: rbac.authorization.k8s.io

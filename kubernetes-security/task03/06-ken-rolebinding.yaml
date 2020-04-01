@@ -4,9 +4,9 @@ metadata:
   name: ken-dev-view
   namespace: dev
 subjects:
-- kind: User
-  name: ken 
-  apiGroup: rbac.authorization.k8s.io
+- kind: ServiceAccount
+  name: ken
+  namespace: dev
 roleRef:
   kind: Role
   name: view
